@@ -104,6 +104,39 @@ vim /etc/tomcat7/server.xml
 ``` xml
 <Context path="" docBase="/usr/local/disconf/build/war"></Context>
 ```
+###### 配置文件修改
+修改 online-resources 目录下的各个配置文件
+application.properties
+使用默认的就可以不需要更改
+
+jdbc-mysql.properties
+修改数据库地址
+
+redis-config.properties
+修改redis链接地址
+redis 因为使用双点的，就算单点也需要配置两个
+``` profile
+redis.group1.retry.times=2
+
+redis.group1.client1.name=BeidouRedis1
+redis.group1.client1.host=10.168.1.1
+redis.group1.client1.port=6379
+redis.group1.client1.timeout=5000
+redis.group1.client1.password=foobared
+
+redis.group1.client2.name=BeidouRedis2
+redis.group1.client2.host=10.168.1.1
+redis.group1.client2.port=6379
+redis.group1.client2.timeout=5000
+redis.group1.client2.password=foobared
+
+redis.evictor.delayCheckSeconds=300
+redis.evictor.checkPeriodSeconds=30
+redis.evictor.failedTimesToBeTickOut=6
+```
+zoo.properties
+配置zookeeper链接地址
+
 
 并在对应的war目录下创建tmp目录，启动tomcat服务器。
 
