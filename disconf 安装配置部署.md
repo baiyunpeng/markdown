@@ -96,6 +96,11 @@ src/main/Java/com/baidu/disconf/web/tools/UserCreateTools.java
 ##### 动静部署
 Disconf代码采用了动静分离设计，
 
+如果想自己设置初始化的用户名信息，可以参考代码来自己生成用户：
+``` java
+src/main/java/com/baidu/disconf/web/tools/UserCreateTools.java
+```
+
 部署War（tomcat）
 ``` shell
 vim /etc/tomcat7/server.xml 
@@ -317,6 +322,7 @@ testUser2|MhxzKhl167
 testUser3|MhxzKhl783
 testUser4|MhxzKhl8758
 testUser5|MhxzKhl112
+
 
 ![enter description here][1]
 
