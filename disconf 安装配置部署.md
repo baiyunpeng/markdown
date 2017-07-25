@@ -184,6 +184,73 @@ server {
     }
 }
 ```
+这里只是部分配置 
+完整的配置如下
+``` nginx
+user  root;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    gzip  on;
+    gzip_http_version 1.0;
+    gzip_disable "MSIE [1-6].";
+    gzip_types text/plain application/x-javascript text/css text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+
+upstream disconf {
+    server 10.10.10.10:8015;
+}
+
+server {
+    listen   8081;
+    server_name disconftest.com;
+    access_log /home/work/dsp/access.log;
+    error_log /home/work/dsp/error.log;
+
+    location / {
+        root /home/docker/garfield/war/html;
+        if ($query_string) {
+            expires max;
+        }
+    }
+
+    location ~ ^/(api|export) {
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://disconf;
+    }
+}
+}
+```
 >注意：访问的html路径应该具有访问权限，可以在在nginx.conf文件第一行中更改用户，或者更改对应的HTML文件的权限。静态配置成功后，可以通过查看tomcat的日志和nginx日志文件来查看访问的记录，静态文件由nginx直接处理，而动态文件则是tomcat来处理的。
 
 ###### 能不安装nginx吗？
