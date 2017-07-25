@@ -307,7 +307,16 @@ init-method="init" destroy-method="destroy">
 
 登陆disconf
 
-默认用户名 admin admin
+##### disconf 默认用户列表
+
+name|pwd
+--------|----
+admin|admin
+testUser1|MhxzKhl9209
+testUser2|MhxzKhl167
+testUser3|MhxzKhl783
+testUser4|MhxzKhl8758
+testUser5|MhxzKhl112
 
 ![enter description here][1]
 
@@ -356,6 +365,8 @@ init-method="init" destroy-method="destroy">
 
 > 支持任意类型配置文件(.properties文件可支持自动注入,非.properties文件则只是简单托管)
 
+
+##### 普通属性文件配置
 
 
 
