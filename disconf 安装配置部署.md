@@ -320,6 +320,7 @@ init-method="init" destroy-method="destroy">
 ```
 
 重启服务配置文件已将添加到本地了
+
 > 支持任意类型配置文件(.properties文件可支持自动注入,非.properties文件则只是简单托管)
 
 
