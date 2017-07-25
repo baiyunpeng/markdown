@@ -269,4 +269,66 @@ init-method="init" destroy-method="destroy">
 </beans>
 ```
 
-Disconf启动需要加载的类，以及需要扫描的包文件目录 
+##### 基于XML配置文件实现
+##### 配置管理
+
+登陆disconf
+
+默认用户名 admin admin
+
+![enter description here][1]
+
+新建一个APP
+
+![enter description here][2]
+
+新建一个配置文件
+
+![enter description here][3]
+
+选择相应的app一般本版号，上传配置文件
+
+![enter description here][4]
+
+添加完成后点击相应的环境查看
+
+![enter description here][5]
+
+##### 服务端配置
+
+添加如下xml
+``` xml
+ <!--disconf 托管文件 配置更改会自动reload-->
+    <bean id="configproperties_disconf" class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/sharding.xml</value>
+            </list>
+        </property>
+    </bean>
+	
+	 <bean id="disconfPropertyConfigurer"
+          class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="propertiesArray">
+            <list>
+                <ref bean="configproperties_disconf"/>
+            </list>
+        </property>
+    </bean>
+```
+
+
+
+
+
+
+
+
+
+  [1]: ./images/1500982025780.jpg
+  [2]: ./images/1500982064075.jpg
+  [3]: ./images/1500982133420.jpg
+  [4]: ./images/1500982175389.jpg
+  [5]: ./images/1500982221824.jpg
