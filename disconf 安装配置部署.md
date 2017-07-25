@@ -251,6 +251,21 @@ server {
 }
 }
 ```
+
+这里我把server name改成了disconftest.com,跟application.properties里面的配置保持一样即可,
+
+注意:
+
+1.须保证日志文件的写入有权限哦,日志文件夹提前建好,否则会报错
+
+2.开头是运行权限,这边因为没有用root运行会导致页面持续被拦截,报403,有遇到的人注意下
+
+服务管理端的部署到这里就结束了,启动zookeeper,redis,tomcat,mysql和nginx就可以访问页面了,输入
+```http
+http://10.10.10.10:8081/
+```
+![enter description here][1]
+
 >注意：访问的html路径应该具有访问权限，可以在在nginx.conf文件第一行中更改用户，或者更改对应的HTML文件的权限。静态配置成功后，可以通过查看tomcat的日志和nginx日志文件来查看访问的记录，静态文件由nginx直接处理，而动态文件则是tomcat来处理的。
 
 ###### 能不安装nginx吗？
@@ -393,23 +408,23 @@ init-method="init" destroy-method="destroy">
 
 
 
-![enter description here][1]
+![enter description here][2]
 
 新建一个APP
 
-![enter description here][2]
+![enter description here][3]
 
 新建一个配置文件
 
-![enter description here][3]
+![enter description here][4]
 
 选择相应的app一般本版号，上传配置文件
 
-![enter description here][4]
+![enter description here][5]
 
 添加完成后点击相应的环境查看
 
-![enter description here][5]
+![enter description here][6]
 
 ##### 服务端配置
 
@@ -444,11 +459,9 @@ init-method="init" destroy-method="destroy">
 ##### 普通属性文件配置
 
 
-
-
-
-  [1]: ./images/1500982025780.jpg
-  [2]: ./images/1500982064075.jpg
-  [3]: ./images/1500982133420.jpg
-  [4]: ./images/1500982175389.jpg
-  [5]: ./images/1500982221824.jpg
+  [1]: ./images/1500984558848.jpg
+  [2]: ./images/1500982025780.jpg
+  [3]: ./images/1500982064075.jpg
+  [4]: ./images/1500982133420.jpg
+  [5]: ./images/1500982175389.jpg
+  [6]: ./images/1500982221824.jpg
