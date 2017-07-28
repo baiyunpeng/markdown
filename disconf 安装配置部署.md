@@ -387,6 +387,7 @@ disconf.enable_local_download_dir_in_class_path=true
         <property name="ignoreUnresolvablePlaceholders" value="true" />
         <property name="propertiesArray">
             <list>
+			<!-- 需要加载的配置 -->
                 <ref bean="configproperties_disconf"/>
             </list>
         </property>
