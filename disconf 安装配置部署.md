@@ -366,7 +366,7 @@ disconf.enable_local_download_dir_in_class_path=true
 
 ![enter description here][6]
 
-##### 服务端配置
+##### spring配置需要加载的配置文件
 
 添加如下xml
 ``` xml
