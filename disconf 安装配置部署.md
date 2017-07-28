@@ -288,7 +288,7 @@ http://10.10.10.10:8081/
 
 #### Client使用
 
-##### 引入disconf client
+##### 引入pom
  创建maven工程，添加对应的Maven库
 
 ``` xml
