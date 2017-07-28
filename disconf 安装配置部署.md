@@ -344,7 +344,7 @@ disconf.ignore=
 disconf.conf_server_url_retry_times=1
 #获取远程配置 重试时休眠时间，默认是5秒
 disconf.conf_server_url_retry_sleep_seconds=1
-#disconf 现在文件目录
+#disconf 现在文件目录 默认 ./disconf/download
 disconf.user_define_download_dir=./disconf/download
 # 下载的文件会被迁移到classpath根路径下，强烈建议将此选项置为 true(默认是true)
 disconf.enable_local_download_dir_in_class_path=true
