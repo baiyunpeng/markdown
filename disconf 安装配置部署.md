@@ -363,9 +363,12 @@ disconf.enable.remote.conf=true
 disconf.conf_server_host=10.168.16.113:8080
 #disconf 版本号
 disconf.version=1_0_0_0
+#disconf 应用ID
 disconf.app=basesms
+#disconf 环境
 disconf.env=qa
 disconf.ignore=
+#disconf 重试次数
 disconf.conf_server_url_retry_times=1
 disconf.conf_server_url_retry_sleep_seconds=1
 disconf.user_define_download_dir=./
