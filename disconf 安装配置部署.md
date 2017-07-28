@@ -370,8 +370,11 @@ disconf.env=qa
 disconf.ignore=
 #disconf 重试次数
 disconf.conf_server_url_retry_times=1
+#disconf 重试时间间隔 
 disconf.conf_server_url_retry_sleep_seconds=1
+#disconf 现在文件目录
 disconf.user_define_download_dir=./
+#disconf 是否启用本地下载
 disconf.enable_local_download_dir_in_class_path=true
 ```
 
