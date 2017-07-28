@@ -335,7 +335,7 @@ disconf.conf_server_url_retry_times=1
 disconf.conf_server_url_retry_sleep_seconds=1
 #disconf 现在文件目录
 disconf.user_define_download_dir=./
-#disconf 是否启用将文件下载到classpath中
+# 下载的文件会被迁移到classpath根路径下，强烈建议将此选项置为 true(默认是true)
 disconf.enable_local_download_dir_in_class_path=true
 ```
 
