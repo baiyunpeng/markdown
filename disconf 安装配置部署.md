@@ -357,21 +357,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 disconf.properties
 ``` profile
+#是否启用远程配置
 disconf.enable.remote.conf=true
-
-disconf.conf_server_host=192.168.1.169:8080
-
-disconf.version=V2
-
-disconf.app=FreeLink
-
-disconf.env=local
-
+#disconf服务器地址
+disconf.conf_server_host=10.168.16.113:8080
+#disconf 版本号
+disconf.version=1_0_0_0
+disconf.app=basesms
+disconf.env=qa
 disconf.ignore=
-
+disconf.conf_server_url_retry_times=1
 disconf.conf_server_url_retry_sleep_seconds=1
-
-disconf.user_define_download_dir=./disconf/download
+disconf.user_define_download_dir=./
+disconf.enable_local_download_dir_in_class_path=true
 ```
 
 disconf.xml
