@@ -381,7 +381,7 @@ disconf.enable_local_download_dir_in_class_path=true
     </bean>
 	
 	 <bean id="disconfPropertyConfigurer"
-          class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
+ class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
         <property name="ignoreResourceNotFound" value="true" />
         <property name="ignoreUnresolvablePlaceholders" value="true" />
         <property name="propertiesArray">
