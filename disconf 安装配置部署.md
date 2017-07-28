@@ -299,9 +299,19 @@ http://10.10.10.10:8081/
         </dependency>
 ```
 
-##### 在普通spring项目中使用 
+##### 加入spring 配置
 
 
+``` xml
+  		<!-- 使用disconf必须添加以下配置 -->
+		<bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
+		destroy-method="destroy">
+				<property name="scanPackage" value="com.egoo.config"/>
+			</bean>
+			<bean id="disconfMgrBean2" class="com.baidu.disconf.client.DisconfMgrBeanSecond"
+		init-method="init" destroy-method="destroy">
+			</bean>
+```
 
 ##### 添加对应的属性文件/resources
 
