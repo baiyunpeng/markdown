@@ -380,6 +380,7 @@ disconf.enable_local_download_dir_in_class_path=true
         </property>
     </bean>
 	
+	 <!--disconf 托管文件 配置更改会自动reload-->
 	 <bean id="disconfPropertyConfigurer"
  class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
         <property name="ignoreResourceNotFound" value="true" />
