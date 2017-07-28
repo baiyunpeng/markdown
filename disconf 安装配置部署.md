@@ -322,7 +322,7 @@ disconf.properties
 disconf.enable.remote.conf=true
 #disconf服务器地址
 disconf.conf_server_host=10.168.16.113:8080
-#disconf 版本号
+#disconf 版本号 disconf 推荐使用 x_x_x_x 版本控制
 disconf.version=1_0_0_0
 #disconf 应用ID
 disconf.app=basesms
