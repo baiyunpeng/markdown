@@ -353,6 +353,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 </project>
 ```
 
+##### 在普通spring项目中使用 
+
+
 ##### 添加对应的属性文件/resources
 
 disconf.properties
