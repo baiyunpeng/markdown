@@ -431,8 +431,9 @@ disconf.enable_local_download_dir_in_class_path|	下载的文件会被迁移到c
 
 ![enter description here][7]
 
-#### 注解使用方式
+#### 配置项注解使用
 >不推荐使用 具有代码入侵
+>
 
 ``` java
 @Service
