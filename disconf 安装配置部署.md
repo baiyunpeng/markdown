@@ -374,6 +374,7 @@ disconf.enable_local_download_dir_in_class_path=true
     <bean id="configproperties_disconf" class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
             <list>
+				<!-- 需要下载的文件路径及配置文件名，可以多个 -->
                 <value>classpath:/sharding.xml</value>
             </list>
         </property>
