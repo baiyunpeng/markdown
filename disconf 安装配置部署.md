@@ -324,7 +324,7 @@ disconf.enable.remote.conf=true
 disconf.conf_server_host=10.168.16.113:8080
 #disconf 版本号 disconf 推荐使用 x_x_x_x 版本控制
 disconf.version=1_0_0_0
-#disconf 应用ID
+ # APP 请采用 产品线_服务名 格式
 disconf.app=basesms
 #disconf 环境
 disconf.env=qa
@@ -398,8 +398,54 @@ disconf.enable_local_download_dir_in_class_path=true
 
 > 支持任意类型配置文件(.properties文件可支持自动注入,非.properties文件则只是简单托管)
 
+##### 启用服务
+> 启动服务 配置文件已加载到class下
 
+![enter description here][7]
 
+#### 属性配置文件使用
+
+``` java
+@Service
+@Scope("singleton")
+@DisconfFile(filename = "redis.properties")
+public class SimpleConfig {
+
+    // 代表连接地址
+    private String host;
+
+    // 代表连接port
+    private String port;
+
+    /**
+     * 地址
+     *
+     * @return
+     */
+    @DisconfFileItem(name = "host", associateField = "host")
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    /**
+     * 端口
+     *
+     * @return
+     */
+    @DisconfFileItem(name = "port", associateField = "port")
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+}
+```
 
 
   [1]: ./images/1500984558848.jpg
@@ -408,3 +454,4 @@ disconf.enable_local_download_dir_in_class_path=true
   [4]: ./images/1500982133420.jpg
   [5]: ./images/1500982175389.jpg
   [6]: ./images/1500982221824.jpg
+  [7]: ./images/1501230249925.jpg
