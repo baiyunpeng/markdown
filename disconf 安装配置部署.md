@@ -404,7 +404,8 @@ disconf.enable_local_download_dir_in_class_path=true
 
 ![enter description here][7]
 
-#### 属性配置文件使用
+#### 注解使用方式
+>不推荐使用 具有代码入侵
 
 ``` java
 @Service
