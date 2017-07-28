@@ -292,7 +292,7 @@ http://10.10.10.10:8081/
  创建maven工程，添加对应的Maven库
 
 ``` xml
-  <dependency>
+  		<dependency>
             <groupId>com.baidu.disconf</groupId>
             <artifactId>disconf-client</artifactId>
             <version>2.6.36</version>
