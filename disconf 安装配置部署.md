@@ -399,7 +399,7 @@ disconf.enable_local_download_dir_in_class_path=true
 > 支持任意类型配置文件(.properties文件可支持自动注入,非.properties文件则只是简单托管)
 
 
-##### 普通属性文件配置
+
 
 
   [1]: ./images/1500984558848.jpg
