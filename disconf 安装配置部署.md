@@ -433,7 +433,10 @@ disconf.enable_local_download_dir_in_class_path|	下载的文件会被迁移到c
 
 #### 配置项注解使用
 >不推荐使用 具有代码入侵
->
+***
+>配置项即K-V的形式，使用如下：
+***
+>在类的get方法上添加注解 @DisconfFileItem 。添加标记 name, 表示配置文件中的KEY名，这是必填的。标记associateField是可选的，它表示此get方法相关连的域的名字，如果此标记未填，则系统会自动 分析get方法，猜测其相对应于域名。强烈建议添加associateField标记，这样就可以避免Eclipse生成的Get/Set方法不符合 Java规范的问题。
 
 ``` java
 @Service
@@ -476,6 +479,13 @@ public class SimpleConfig {
     }
 }
 ```
+
+具体步骤是：
+1. 为这个类定义 @DisconfFile 注解，指定文件名为 redis.properties 。
+2. 定义域port，并使用idea为其自动生成 get&set 方法。
+3. 为该域的get方法上添加注解 @DisconfFileItem 。添加标记 name, 表示配置文件中的KEY名，这是必填的。标记associateField是可选的，它表示此get方法相关连的域的名字，如果此标记未填，则系统会自动 分析get方法，猜测其相对应于域名。强烈建议添加associateField标记，这样就可以避免Eclipse生成的Get/Set方法不符合 Java规范的问题。
+4. 标记它为Spring托管的类 （使用@Service），且 "scope" 都必须是singleton的。
+5. 
 
 
   [1]: ./images/1500984558848.jpg
