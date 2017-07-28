@@ -328,6 +328,7 @@ disconf.version=1_0_0_0
 disconf.app=basesms
 #disconf 环境
 disconf.env=qa
+# 忽略哪些分布式配置，用逗号分隔
 disconf.ignore=
 # 获取远程配置 重试次数，默认是3次
 disconf.conf_server_url_retry_times=1
