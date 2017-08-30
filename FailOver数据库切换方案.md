@@ -108,7 +108,8 @@ grammar_cjkRuby: true
     </bean>
 	```
 	* 增加failOver 数据源
-		增加failOver 的读写数据源
+		>增加failOver 的读写数据源
+
 	```xml
 	 <!-- spring配置多数据源开始 -->
     <bean id="parentDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
