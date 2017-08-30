@@ -81,3 +81,5 @@ grammar_cjkRuby: true
 2. 实时获取当前数据源是否是failOver库
 
 ### 项目中使用
+
+1. 引入jar包 base-common-database
