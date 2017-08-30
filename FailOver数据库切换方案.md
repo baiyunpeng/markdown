@@ -100,6 +100,7 @@ grammar_cjkRuby: true
 2. 项目中加入failOver数据源配置文件
 
 	failoverresources.properties
+	
 	![enter description here][2]
 
 3. 修改spring配置文件
