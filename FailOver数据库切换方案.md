@@ -73,8 +73,6 @@ grammar_cjkRuby: true
 
 
 
-  [1]: ./images/1504081449741.jpg
-  
   ### 系统提供接口
 1.  远程操作切换数据源接口
 
@@ -82,4 +80,20 @@ grammar_cjkRuby: true
 
 ### 项目中使用
 
-1. 引入jar包 base-common-database
+1.  引入jar包 base-common-database
+``` xml
+<dependency>
+    <groupId>com.reapal</groupId>
+    <artifactId>base-common-database</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+2. 项目中加入failOver数据源配置文件
+
+	failoverresources.properties
+	![enter description here][2]
+
+
+  [1]: ./images/1504081449741.jpg
+  [2]: ./images/1504081726553.jpg
