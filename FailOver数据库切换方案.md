@@ -40,8 +40,8 @@ grammar_cjkRuby: true
 	通过同步数据，数据库后，将数据导入到主库中。
 
 ### 详细设计步骤
-1. disconf 管理配置文件
 
+1. disconf 管理配置文件
 >将failOver等配置文件交给disconf配置项进行统一管理，进行分布式配置文件管理。
 
 2. 服务加载数据源配置
