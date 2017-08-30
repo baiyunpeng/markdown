@@ -279,9 +279,64 @@ grammar_cjkRuby: true
 	 ```
 
 ### 代码片段
-1. 数据源切换
-2. 
+``` java
+ private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>(); // 线程本地环境
 
+
+    private static boolean fialOver = false;
+
+    // 设置数据源类型
+    public static void setDataSourceType(String dataSourceType) {
+        contextHolder.set(dataSourceType);
+    }
+
+    /**
+     * 是否启用failOver数据源
+     *
+     * @param failOverStatus true: 启用failOver 数据源
+     *                       false：使用普通数据源
+     */
+    public static synchronized void failOver(boolean failOverStatus) {
+        fialOver = failOverStatus;
+    }
+
+    /**
+     * 获取当前是否是failOver库
+     * @return
+     */
+    public static boolean getIsFailOver() {
+        return fialOver;
+    }
+
+
+    // 获取数据源类型
+    public static String getDataSourceType() {
+        return getDBType();
+    }
+
+
+    //获取数据源类型
+    public static String getDBType() {
+        String dbType = contextHolder.get();
+        if (dbType == null) {
+            dbType = DataSourceConst.WRITE;
+        }
+        if (fialOver) {
+            if (dbType.equals(DataSourceConst.READ)) {
+                dbType = FailOverConst.FIALOVERREAD;
+            } else if (dbType.equals(DataSourceConst.WRITE)) {
+                dbType = FailOverConst.FIALOVERWRITE;
+            }
+        }
+        return dbType;
+    }
+
+    // 清除数据源类型
+    public static void clearDataSourceType() {
+        contextHolder.remove();
+    }
+```
 
   [1]: ./images/1504081449741.jpg
   [2]: ./images/1504081726553.jpg
+  [3]: ./images/1504082222826.jpg
