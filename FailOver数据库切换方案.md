@@ -79,3 +79,5 @@ grammar_cjkRuby: true
 1.  远程操作切换数据源接口
 
 2. 实时获取当前数据源是否是failOver库
+
+### 项目中使用
