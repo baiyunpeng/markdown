@@ -280,7 +280,7 @@ grammar_cjkRuby: true
 
 ### 代码片段
 ``` java
- private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>(); // 线程本地环境
+ 	private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>(); // 线程本地环境
 
 
     private static boolean fialOver = false;
