@@ -269,6 +269,14 @@ grammar_cjkRuby: true
         <property name="defaultTargetDataSource" ref="writeDataSource"></property>
     </bean>
 	```
+	* 增加failOver切换服务
+	``` xml
+	<bean id="failOverService" class="com.reapal.failover.service.impl.FailOverServiceImpl">
+        <property name="serviceName" value="base-sms-provider"/>
+    </bean>
+    <dubbo:service interface="com.reapal.failover.service.FailOverService" ref="failOverService"
+                   version="${dubbo.version}"/>
+	 ```
 
 
   [1]: ./images/1504081449741.jpg
