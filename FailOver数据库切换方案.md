@@ -94,6 +94,181 @@ grammar_cjkRuby: true
 	failoverresources.properties
 	![enter description here][2]
 
+3. 修改spring配置文件
+	* 将failoverresources.properties 加入属性管理器
+	``` xml
+	 <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:resources.properties</value>
+                <value>classpath:dubbo.properties</value>
+                <value>classpath:failoverresources.properties</value>
+            </list>
+        </property>
+    </bean>
+	```
+	* 增加failOver 数据源
+		增加failOver 的读写数据源
+	```xml
+	 <!-- spring配置多数据源开始 -->
+    <bean id="parentDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
+    <!-- 以下是配置各个数据库的特性 -->
+    <!-- 数据库 -->
+    <bean id="writeDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${connection.url}"/>
+        <property name="username" value="${connection.username}"/>
+        <property name="password" value="${connection.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <!-- <property name="validationQuery" value="SELECT 'x'" />-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!-- <property name="filters" value="stat" />-->
+
+        <property name="filters" value="config"/>
+        <property name="connectionProperties" value="config.decrypt=true"/>
+    </bean>
+    <bean id="readDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${connection2.url}"/>
+        <property name="username" value="${connection2.username}"/>
+        <property name="password" value="${connection2.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <!-- <property name="validationQuery" value="SELECT count(*)" />-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!--<property name="filters" value="stat" />-->
+
+        <property name="filters" value="config"/>
+        <property name="connectionProperties" value="config.decrypt=true"/>
+    </bean>
+
+
+    <bean id="failOverWriteDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${fialoverconnection.url}"/>
+        <property name="username" value="${fialoverconnection.username}"/>
+        <property name="password" value="${fialoverconnection.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <!-- <property name="validationQuery" value="SELECT 'x'" />-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!-- <property name="filters" value="stat" />-->
+
+        <property name="filters" value="config"/>
+        <property name="connectionProperties" value="config.decrypt=true"/>
+    </bean>
+    <bean id="failOverReadDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${fialoverconnection2.url}"/>
+        <property name="username" value="${fialoverconnection2.username}"/>
+        <property name="password" value="${fialoverconnection2.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <!-- <property name="validationQuery" value="SELECT count(*)" />-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!--<property name="filters" value="stat" />-->
+
+        <property name="filters" value="config"/>
+        <property name="connectionProperties" value="config.decrypt=true"/>
+    </bean>
+
+
+    <bean id="dataSource" class="com.reapal.common.dynamicds.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="readDataSource" key="READ"></entry>
+                <entry value-ref="writeDataSource" key="WRITE"></entry>
+                <entry value-ref="failOverReadDataSource" key="FIALOVERREAD"></entry>
+                <entry value-ref="failOverWriteDataSource" key="FAILOVERWRITE"></entry>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="writeDataSource"></property>
+    </bean>
+	```
+
 
   [1]: ./images/1504081449741.jpg
   [2]: ./images/1504081726553.jpg
