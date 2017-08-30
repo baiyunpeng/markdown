@@ -76,3 +76,6 @@ grammar_cjkRuby: true
   [1]: ./images/1504081449741.jpg
   
   ### 系统提供接口
+1.  远程操作切换数据源接口
+
+2. 实时获取当前数据源是否是failOver库
