@@ -279,8 +279,8 @@ grammar_cjkRuby: true
 ```
 
 ### 管理界面
-
-
+![enter description here][3]
+ 通过界面对服务进行数据库failOver切换
 
 ### 代码片段
 ``` java
@@ -341,6 +341,7 @@ grammar_cjkRuby: true
     }
 ```
 
+
   [1]: ./images/1504081449741.jpg
   [2]: ./images/1504081726553.jpg
-  [3]: ./images/1504082222826.jpg
+  [3]: ./images/1504082538739.jpg
