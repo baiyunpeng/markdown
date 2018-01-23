@@ -30,7 +30,7 @@ $(function () {
 
 >如下代码
 ``` html
-  <input type="text" class="required special sh_input_xlg"
+  <input type="text" class="required special sh_input_xlg" ...
 
 ```
 
